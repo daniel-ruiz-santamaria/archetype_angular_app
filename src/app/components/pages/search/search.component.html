@@ -1,0 +1,89 @@
+<div class="container border">
+    <form style="padding: 20px;">
+    <div class="form-row border col-md-4" style="padding: 20px;">
+        <h4>{{'search.form.user.title' | translate}}</h4>
+        <hr>
+        <div class="form-group col-md-12">
+            <label for="inputAddress">{{'search.form.user.fields.user.label' | translate}}</label>
+            <input type="text" class="form-control" id="inputAddress" name="user" [(ngModel)]="searchObeject.user"  placeholder="{{'search.form.user.fields.user.placeholder' | translate}}">
+        </div>
+    </div>
+
+    <div class="form-row border" style="padding: 20px;margin-top: 20px;">
+        <h4>{{'search.form.search.title' | translate}}</h4>
+        <hr>
+        <div class="row">
+            <div class="col-sm" style="margin: 10px;">
+                <div class="form-group">
+                    dasdada
+                    <div class="form-group col-md-12">
+                        <div class="custom-file">
+                            <label class="custom-file-label" for="customFile">{{'search.form.search.fields.file.label' | translate}}</label>
+                            <input #file type="file" class="form-control" id="customFile" accept='image/*' (change)="preview(file.files)">
+                        </div>
+                    </div>
+        
+                    <div class="form-group col-md-12" style="padding-top: 20px;">
+                        <label class="custom-file-label" for="vienaCode">{{'search.form.search.fields.vienaCode.label' | translate}}</label>
+
+                        <tag-input 
+                            #tagInput
+                            id="vienaCode" 
+                            placeholder ="{{'search.form.search.fields.vienaCode.placeholder1' | translate}}"
+                            secondaryPlaceholder ="{{'search.form.search.fields.vienaCode.placeholder2' | translate}}"
+                            [editable]='true'
+                            [(ngModel)]='searchObeject.vienaCodes'
+                            name="viennaCode"
+                            [clearOnBlur]="true"
+                            [addOnBlur]="true"
+                            [onAdding]="onAddedViennaFunc"
+                            (onTextChange)="onViennaTextChange($event)"
+                            theme='bootstrap' 
+                            required 
+                            >
+                        </tag-input>
+                        <div *ngIf="!isValidtagItem1" style="color: red;">
+                            "{{'search.form.search.fields.vienaCode.error' | translate}}"
+                          </div>
+                    </div>
+                    <div class="form-group col-md-12" style="padding-top: 20px;">
+                        <label class="custom-file-label" for="nizaCode">{{'search.form.search.fields.vienaCode.label' | translate}}</label>
+                        <tag-input 
+                            #tagInput2
+                            id="nizaCode" 
+                            placeholder ="{{'search.form.search.fields.nizaCode.placeholder1' | translate}}"
+                            secondaryPlaceholder ="{{'search.form.search.fields.nizaCode.placeholder2' | translate}}"
+                            [editable]='true'
+                            [(ngModel)]='searchObeject.nizaCodes'
+                            name="nizaCode"
+                            [clearOnBlur]="true"
+                            [addOnBlur]="true"
+                            [onAdding]="onAddedNizaFunc"
+                            (onTextChange)="onNizaTextChange($event)"
+                            theme='bootstrap' 
+                            required 
+                            >
+                        </tag-input>
+                        <div *ngIf="!isValidtagItem2" style="color: red;">
+                            "{{'search.form.search.fields.nizaCode.error' | translate}}"
+                          </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm" style="margin: 10px;min-height: 100%;">
+                <figure *ngIf="imgURL">
+                    <img [src]="imgURL" style="max-width: 100%;max-height: 100%; height: 80%;display: block;margin-left: auto;margin-right: auto;">
+                    <figcaption style="border: 1px dotted rgb(255, 255, 255);text-align: center;"> Your text </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <button type="submit"
+     class="btn btn-primary" 
+     (click)="requestInference()"
+     [disabled]="searchObeject.user == '' || searchObeject.imageURL == '' || !searchObeject.imageContent" 
+     style="margin-top: 20px;">{{'search.form.btnSubmit' | translate}}</button>
+  </form>
+</div>
+{{searchObeject | json}}

@@ -1,0 +1,48 @@
+{
+    "menu": {
+        "home": "Home",
+        "search": "Buscar",
+        "conflicts": "Conflictos",
+        "metrics": "Métricas"
+    },
+    "search": {
+        "form": {
+            "user": {
+                "title": "Información de usuario",
+                "fields": {
+                    "user": {
+                        "label":"Usuario",
+                        "placeholder": "Nombre de usuario"
+                    }
+                }
+            },
+            "search": {
+                "title": "Busqueda de imagen",
+                "fields": {
+                    "file": {
+                        "label":"Imagen de referencia",
+                        "placeholder": "Fichero"
+                    },
+                    "vienaCode": {
+                        "label":"Código Viena",
+                        "placeholder1": "Ej 21.03.03",
+                        "placeholder2": "Añadir código Vienna",
+                        "buttonText": "Añadir",
+                        "error": "Formato incorrecto [dd.dd.dd]. Ej 27.33.12"
+                    },
+                    "nizaCode": {
+                        "label":"Código Niza",
+                        "placeholder1": "Ej 21.03.03",
+                        "placeholder2": "Añadir código Niza",
+                        "buttonText": "Añadir",
+                        "error": "Formato incorrecto [dd..dd]. Ej 123"
+                    },
+                    "preview": {
+                        "text":"Previsualización"
+                    }
+                }
+            },
+            "btnSubmit": "Comenzar búsqueda"
+        }
+    }
+}
