@@ -1,0 +1,83 @@
+<div class="container" style="border-radius: 10px;border: 1px solid #cdcdcd;padding: 10px; margin-top: 40px">
+    <h1>{{ 'users.tittle' | translate}}</h1>
+    <hr>
+    <div class="container" style="padding-top: 40px;">
+        <table class="table table-striped table-hover table-bordered width:100%" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead class="thead-dark">
+                <tr>
+                    <th>{{ 'users.table.documentId' | translate}}</th>
+                    <th>{{ 'users.table.userName' | translate}}</th>
+                    <th>{{ 'users.table.numberSessions' | translate}}</th>
+
+                </tr>
+            </thead> 
+            <tbody>
+                <tr *ngFor="let us of userSessions; let i = index" (click)="selectedRow(i)">
+                    <td>{{ us.idDocument }}</td>
+                    <td>{{ us.userName }}</td>
+                    <td>{{ us.sessions  }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div *ngIf="selected" class="container" style="border-radius: 10px;border: 1px solid #cdcdcd;padding: 10px; margin-top: 40px">
+        <h2>{{ 'users.details.tittle' | translate}}</h2>
+        <hr>
+        <div class="container" style="padding-top: 40px;">
+            <table class="table table-striped table-hover table-bordered width:100%" datatable [dtOptions]="dtOptionsSessions" [dtTrigger]="dtTriggerSessions">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>{{ 'users.details.fields.sessionId' | translate}}</th>
+                        <th>{{ 'users.details.fields.documentId' | translate}}</th>
+                        <th>{{ 'users.details.fields.idUser' | translate}}</th>
+                        <th>{{ 'users.details.fields.userName' | translate}}</th>
+                        <th>{{ 'users.details.fields.isLoged' | translate}}</th>
+                        <th>{{ 'users.details.fields.registerDate' | translate}}</th>
+                        <th>audits</th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    <tr *ngFor="let u of selected; let j = index" (click)="selectedSessionRow(j)" >
+                        <td>{{ u.idSession }}</td>
+                        <td>{{ u.idDocument }}</td>
+                        <td>{{ u.idRegistredUser  }}</td>
+                        <td>{{ u.fullName  }}</td>
+                        <td>{{ u.isLoged }}</td>
+                        <td>{{ u.timestamp | date: 'dd/MM/YYYY HH:mm:ss' }}</td>
+                        <td>{{ getAuditBySessions(u.idSession).length}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div *ngIf="audits.length > 0" class="container" style="border-radius: 10px;border: 1px solid #cdcdcd;padding: 10px; margin-top: 40px">
+                <h2>{{ 'users.audit.tittle' | translate}}</h2>
+                <hr>
+                <table class="table table-striped table-hover table-bordered" datatable [dtOptions]="dtOptionsAudits" [dtTrigger]="dtTriggerAudits" style="display:inline-block;width: 100%;overflow-wrap: anywhere;" >
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>{{ 'users.audit.fields.date' | translate}}</th>
+                            <th>{{ 'users.audit.fields.chanel' | translate}}</th>
+                            <th>{{ 'users.audit.fields.intent' | translate}}</th>
+                            <th>{{ 'users.audit.fields.request' | translate}}</th>
+                            <th>{{ 'users.audit.fields.response' | translate}}</th>
+                            <th>{{ 'users.audit.fields.score' | translate}}</th>
+                        </tr>
+                    </thead> 
+                    <tbody>
+                        <tr *ngFor="let a of audits">
+                            <td style="width: 12%">{{a.date | date: 'dd/MM/YYYY HH:mm:ss' }}</td>
+                            <td style="width: 12%">{{a.channelId}}</td>
+                            <td style="width: 12%">{{a.intent}}</td>
+                            <td style="width: 12%">{{a.query}}</td>
+                            <td style="width: 40%">{{a.answer}}</td>
+                            <td style="width: 12%">{{a.score | number:'1.0-3'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>  
+    </div>
+
+</div>

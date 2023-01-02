@@ -1,0 +1,100 @@
+<div class="container" style="border-radius: 10px;border: 1px solid #cdcdcd;padding: 10px; margin-top: 40px">
+    <h1>{{ 'support.tittle' | translate}}</h1>
+    <hr>
+    <div class="container" style="padding-top: 40px;">
+        <table class="table table-striped table-hover table-bordered width:100%" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+            <thead class="thead-dark">
+                <tr>
+                    <th>{{ 'support.table.idSession' | translate}}</th>
+                    <th>{{ 'support.table.date' | translate}}</th>
+                    <th>{{ 'support.table.department' | translate}}</th>
+                    <th>{{ 'support.table.userName' | translate}}</th>
+                    <th>{{ 'support.table.request' | translate}}</th>
+                    <th>{{ 'support.table.response' | translate}}</th>
+                    <th>{{ 'support.table.state' | translate}}</th>
+
+                </tr>
+            </thead> 
+            <tbody>
+                <tr *ngFor="let data of supportData; let i = index" (click)="selectedRow(i)">
+                    <td>{{ data.idSession }}</td>
+                    <td>{{ data.timestamp  | date: 'dd/MM/YYYY HH:mm:ss'}}</td>
+                    <td>{{ data.departmentName  }}</td>
+                    <td>{{ data.userFullName }}</td>
+                    <td>{{ data.request }}</td>
+                    <td><div *ngFor="let r of data.responses; let i = index">{{i+1}} - {{r}}</div></td>
+                    <td>{{ data.getStateAsString() }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="selected" class="container" style="border-radius: 10px;border: 1px solid #cdcdcd;padding: 10px; margin-top: 40px">
+        <h2>{{ 'support.details.tittle' | translate}}</h2>
+        <hr>
+        <form style="border: 1px;padding: 20px;" >
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="idSession">{{ 'support.details.fields.sessionId' | translate}}</label>
+                    <input type="text" [(ngModel)]="selected.idSession" name="idSession" class="form-control" id="idSession" aria-describedby="emailHelp" disabled="true">
+                </div>
+                <div class="col-md-5 mb-5">
+                    <label for="idSupporRequest">{{ 'support.details.fields.requestSupportId' | translate}}</label>
+                    <input type="text" [(ngModel)]="selected.idSupporRequest" name="idSupporRequest" class="form-control" id="idSupporRequest" aria-describedby="emailHelp" disabled="true">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="timestamp">{{ 'support.details.fields.requestDate' | translate}}</label>
+                    <input type="text" jqdatepicker  [ngModel]="selected.timestamp | date: 'dd/MM/YYYY HH:mm:ss'" name="timestamp" class="form-control" id="timestamp" aria-describedby="emailHelp" disabled="true">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 mb-2">
+                    <label for="documentType">{{ 'support.details.fields.documentType' | translate}}</label>
+                    <input type="text" [(ngModel)]="selected.documentType" name="documentType" class="form-control" id="documentType" aria-describedby="emailHelp" disabled="true">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="idRegistredUser">{{ 'support.details.fields.userId' | translate}}</label>
+                    <input type="text" [(ngModel)]="selected.idRegistredUser" name="idRegistredUser" class="form-control" id="idRegistredUser" aria-describedby="emailHelp" disabled="true">
+                </div>
+                <div class="col-md-5 mb-5">
+                    <label for="userFullName">{{ 'support.details.fields.userName' | translate}}</label>
+                    <input type="text" [(ngModel)]="selected.userFullName" name="userFullName" class="form-control" id="userFullName" aria-describedby="emailHelp" disabled="true">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 mb-5">
+                    <label for="email">{{ 'support.details.fields.email' | translate}}</label>
+                    <input type="email" [(ngModel)]="selected.email" name="email" class="form-control" id="email" aria-describedby="emailHelp" disabled="true">
+                </div>
+                <div class="col-md-5 mb-5">
+                    <label for="phone">{{ 'support.details.fields.phone' | translate}}</label>
+                    <input type="text" [(ngModel)]="selected.phone" name="phone" class="form-control" id="phone" aria-describedby="emailHelp" disabled="true">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 mb-5">
+                    <label for="departmentId">{{ 'support.details.fields.departmentId' | translate}}</label>
+                    <input type="text" [(ngModel)]="selected.departmentId" name="departmentId" class="form-control" id="departmentId" aria-describedby="emailHelp" disabled="true">
+                </div>
+                <div class="col-md-5 mb-5">
+                    <label for="departmentName">{{ 'support.details.fields.departmentName' | translate}}</label>
+                    <input type="text" [(ngModel)]="selected.departmentName" name="departmentName" class="form-control" id="departmentName" aria-describedby="emailHelp" disabled="true">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 mb-5">
+                    <label for="responses" class="form-label">{{ 'support.details.fields.departmentResponses' | translate}}</label>
+                    <tag-input id="responses" [(ngModel)]='selected.responses' name="responses" (onTagEdited)="onChange()" (onRemove)="onChange()" (onAdd)="onChange()"></tag-input>
+                </div>
+                <div class="form-group col-md-5"> 
+                    <label for="state" class="form-label">{{ 'support.details.fields.state' | translate}}</label>
+                    <select id="state" class="form-select"  [(ngModel)]="selected.state" name="state" (change)="onChange()">  <!--(change)="onSampleSelected()"-->
+                        <option *ngFor="let s of states" [value]="s">{{s}}</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!changed" (click)="save()">Actualizar registro</button>
+          </form>
+          
+    </div>
+</div>

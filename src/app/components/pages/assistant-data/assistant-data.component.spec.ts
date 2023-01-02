@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MetricsComponent } from './metrics.component';
+import { AssistantDataComponent } from './assistant-data.component';
 
-describe('MetricsComponent', () => {
-  let component: MetricsComponent;
-  let fixture: ComponentFixture<MetricsComponent>;
+describe('AssistantDataComponent', () => {
+  let component: AssistantDataComponent;
+  let fixture: ComponentFixture<AssistantDataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MetricsComponent ]
+      declarations: [ AssistantDataComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MetricsComponent);
+    fixture = TestBed.createComponent(AssistantDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

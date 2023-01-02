@@ -1,9 +1,95 @@
 {
     "menu": {
         "home": "Home",
-        "search": "Search",
-        "conflicts": "Conflicts",
-        "metrics": "Metrics"
+        "users": "Users",
+        "anwers": "Assistant responses",
+        "assitant-data": "Assistant data",
+        "audit": "Conversations history",
+        "feedback": "Feedbacks",
+        "support": "Support requests"
+    },
+    "support": {
+        "tittle": "Support Request",
+        "table": {
+            "idSession": "Session Id",
+            "date": "Date",
+            "department": "Deparment",
+            "idUser": "User Id",
+            "userName": "User name",
+            "email": "Email",
+            "phone": "Phone",
+            "request": "Request",
+            "response": "Response",
+            "state": "State"
+        },
+        "details": {
+            "tittle": "Support request details",
+            "fields":{
+                "sessionId": "Session ID",
+                "requestSupportId": "Support request ID",
+                "requestDate": "Request date",
+                "documentType": "Document type",
+                "userId": "User ID",
+                "userName": "User name",
+                "email": "Email",
+                "phone": "Phone",
+                "departmentId": "Department ID",
+                "departmentName": "Department name",
+                "departmentResponses": "Department responses",
+                "state": "State"
+            }
+        }
+    },
+    "answers": {
+        "tittle": "Assistant responses",
+        "table": {
+            "key": "Key",
+            "row": "ID row",
+            "date": "Date",
+            "answer": "Answer"
+        }
+    },
+    "feedback": {
+        "tittle": "Users feedback",
+        "table": {
+            "idFeedback": "Feedback Id",
+            "timestamp": "Date",
+            "idSession": "Session ID",
+            "calification": "Calification",
+            "comments": "User comments"
+        }
+    },
+    "users": {
+        "tittle": "Summary of users",
+        "table": {
+            "documentId": "Document ID",
+            "userName": "User name",
+            "numberSessions": "Number of sessions",
+            "audits": "Conversations"
+        },
+        "details": {
+            "tittle": "User sessions details",
+            "fields":{
+                "sessionId": "Session ID",
+                "documentId": "Document ID",
+                "idUser": "User ID",
+                "userName": "User name",
+                "isLoged": "is Loged",
+                "registerDate": "Register date",
+                "audits": "Conversations"
+            }
+        },
+        "audit": {
+            "tittle": "Conversations details",
+            "fields":{
+                "date": "Request Date",
+                "chanel":"Chanel",
+                "intent": "Intent NLP",
+                "request": "Query",
+                "response": "Answer",
+                "score": "Score"
+            }
+        }
     },
     "search": {
         "form": {

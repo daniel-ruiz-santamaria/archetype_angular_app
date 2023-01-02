@@ -1,9 +1,96 @@
 {
     "menu": {
         "home": "Home",
-        "search": "Buscar",
-        "conflicts": "Conflictos",
-        "metrics": "Métricas"
+        "users": "Usuarios",
+        "anwers": "Respuestas del asistente",
+        "assitant-data": "Datos del asistente",
+        "audit": "Histórico de conversaciones",
+        "feedback": "Feedback",
+        "support": "Peticiones de soporte",
+        "luis": "NLP con LUIS",
+        "qna-maker": "NLP con QNA Maker"
+    },
+    "support": {
+        "tittle": "Peticiones de soporte",
+        "table": {
+            "idSession": "Id Sessión",
+            "date": "Fecha",
+            "department": "Departamento",
+            "idUser": "Id Usuario",
+            "userName": "Nombre de usuario",
+            "email": "Email",
+            "phone": "Teléfono",
+            "request": "Petición",
+            "response": "Respuesta",
+            "state": "Estado"
+        },
+        "details": {
+            "tittle": "Detalles de la petición de soporte",
+            "fields":{
+                "sessionId": "ID de sesión",
+                "requestSupportId": "ID de petición de soporte",
+                "requestDate": "Fecha de actualización",
+                "documentType": "Tipo de documento",
+                "userId": "ID de usuario",
+                "userName": "Nombre de usuario",
+                "email": "Mail",
+                "phone": "Teléfono",
+                "departmentId": "ID de departamento",
+                "departmentName": "Nomnre de departamento",
+                "departmentResponses": "Respuestas del departamento",
+                "state": "Estado"
+            }
+        }
+    },
+    "answers": {
+        "tittle": "Respuestas del asistente",
+        "table": {
+            "key": "Clave",
+            "row": "ID fila",
+            "date": "Fecha",
+            "answer": "Respuesta"
+        }
+    },
+    "feedback": {
+        "tittle": "Feedback de usuarios",
+        "table": {
+            "idFeedback": "ID",
+            "timestamp": "Fecha",
+            "idSession": "ID de sesión",
+            "calification": "Calificación",
+            "comments": "Comentarios"
+        }
+    },
+    "users": {
+        "tittle": "Resumen de usuarios",
+        "table": {
+            "documentId": "Número de documento",
+            "userName": "Nombre de usuario",
+            "numberSessions": "Número de sesiones del usuario"
+        },
+        "details": {
+            "tittle": "Detalles de sesiones del usuario",
+            "fields":{
+                "sessionId": "ID de sesión",
+                "documentId": "ID de documento",
+                "idUser": "ID de usuario registrado",
+                "userName": "Nombre de usuario",
+                "isLoged": "Logado",
+                "registerDate": "Fecha de registro",
+                "audits": "Conversaciones"
+            }
+        },
+        "audit": {
+            "tittle": "Detalles de conversaciones",
+            "fields":{
+                "date": "Fecha de petición",
+                "chanel":"Canal",
+                "intent": "Resulución NLP",
+                "request": "Petición",
+                "response": "Respuesta",
+                "score": "Score"
+            }
+        }
     },
     "search": {
         "form": {
